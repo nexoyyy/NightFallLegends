@@ -6,15 +6,15 @@ function setupFAQ() {
         const answer = item.querySelector('.faq-answer');
         btn.addEventListener('click', function() {
             const isOpen = answer.classList.contains('show-faq');
-            // Ferme toutes les réponses
+            // Close all answers
             document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show-faq'));
             document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('active'));
-            // Ouvre si ce n'était pas déjà ouvert
+            // Open if not already open
             if (!isOpen) {
                 answer.classList.add('show-faq');
                 btn.classList.add('active');
             }
-            // Animation secousse sur le bouton
+            // Shake animation on button
             btn.classList.remove('shake-faq');
             void btn.offsetWidth;
             btn.classList.add('shake-faq');

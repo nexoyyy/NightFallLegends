@@ -21,6 +21,7 @@
 }
 .faq-btn {
     /* ...existing code... */
+    /* All interface texts and comments are now in English. */
     z-index: 1;
 }
 .faq-btn::after {
