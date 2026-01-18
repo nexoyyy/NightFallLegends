@@ -165,7 +165,7 @@
                         </div>
                         <h3>Windows</h3>
                         <p>Latest Version</p>
-                        <a href="https://cdn.discordapp.com/attachments/1462161341736292665/1462572765570666658/NightFallLegends_1.3.6.msi?ex=696eae88&is=696d5d08&hm=09ee8f9e0cc20531beefe5b1d44d5d31fde3497138e2eac083c041f5ee1a2bdd&" class="btn btn-download" target="_blank" rel="noopener">Télécharger pour Windows (.msi)</a>
+                        <button id="force-download-btn" class="btn btn-download">Télécharger pour Windows (.msi)</button>
                         <p style="margin-top:12px;color:#fff;font-size:1rem;">Si le téléchargement ne démarre pas, <b>clic droit</b> sur le bouton puis <b>"Enregistrer le lien sous..."</b>.<br>Certains navigateurs ou Discord peuvent bloquer le téléchargement direct.</p>
                     </div>
                 </div>
@@ -175,5 +175,21 @@
 
 
     <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('force-download-btn');
+        if(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var link = document.createElement('a');
+                link.href = 'https://cdn.discordapp.com/attachments/1462161341736292665/1462572765570666658/NightFallLegends_1.3.6.msi?ex=696eae88&is=696d5d08&hm=09ee8f9e0cc20531beefe5b1d44d5d31fde3497138e2eac083c041f5ee1a2bdd&';
+                link.download = '';
+                document.body.appendChild(link);
+                link.click();
+                setTimeout(function(){ document.body.removeChild(link); }, 100);
+            });
+        }
+    });
+    </script>
 </body>
 </html>
