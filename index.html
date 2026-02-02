@@ -180,12 +180,7 @@
         if(btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                var link = document.createElement('a');
-                link.href = https://cdn.discordapp.com/attachments/1464598198004748311/1467932632376541397/NightFallLegends_3.4.9.msi?ex=69822e4c&is=6980dccc&hm=ee5a8cbc7b33693794d0b0f8146bf5df44bf46953417e1fb65e8ccb0a468f18a&';
-                link.download = '';
-                document.body.appendChild(link);
-                link.click();
-                setTimeout(function(){ document.body.removeChild(link); }, 100);
+                window.open('https://cdn.discordapp.com/attachments/1464598198004748311/1467932632376541397/NightFallLegends_3.4.9.msi?ex=69822e4c&is=6980dccc&hm=ee5a8cbc7b33693794d0b0f8146bf5df44bf46953417e1fb65e8ccb0a468f18a&', '_blank');
             });
         }
     });
