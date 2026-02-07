@@ -1,4 +1,3 @@
-// FAQ toggle with answer display (ultra robust)
 function setupFAQ() {
     const faqItems = document.querySelectorAll('.faq-list > li');
     faqItems.forEach((item) => {
@@ -6,15 +5,12 @@ function setupFAQ() {
         const answer = item.querySelector('.faq-answer');
         btn.addEventListener('click', function() {
             const isOpen = answer.classList.contains('show-faq');
-            // Close all answers
             document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show-faq'));
             document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('active'));
-            // Open if not already open
             if (!isOpen) {
                 answer.classList.add('show-faq');
                 btn.classList.add('active');
             }
-            // Shake animation on button
             btn.classList.remove('shake-faq');
             void btn.offsetWidth;
             btn.classList.add('shake-faq');
@@ -27,7 +23,6 @@ if (document.readyState === 'loading') {
     setupFAQ();
 }
 
-// Animation secousse CSS pour le bouton FAQ
 (function(){
     if (document.getElementById('faq-shake-style')) return;
     const style = document.createElement('style');
@@ -47,17 +42,14 @@ if (document.readyState === 'loading') {
     `;
     document.head.appendChild(style);
 })();
-// Navigation mobile
 const navSlide = () => {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
     
-    // Toggle Nav
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
         
-        // Animate Links
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = '';
@@ -66,12 +58,10 @@ const navSlide = () => {
             }
         });
         
-        // Burger Animation
         burger.classList.toggle('toggle');
     });
 }
 
-// Effet de parallaxe pour le fond
 const parallax = () => {
     document.addEventListener('mousemove', (e) => {
         const stars = document.querySelector('.stars');
@@ -82,7 +72,6 @@ const parallax = () => {
     });
 }
 
-// Animation au défilement
 const scrollAnimation = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -99,7 +88,6 @@ const scrollAnimation = () => {
     });
 }
 
-// Effet de hover sur les boutons de téléchargement
 const downloadButtons = () => {
     const buttons = document.querySelectorAll('.btn-download');
     
@@ -107,18 +95,14 @@ const downloadButtons = () => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Animation de clic
             button.classList.add('clicked');
             
-            // Afficher un message de téléchargement
             const originalText = button.textContent;
             button.textContent = 'Téléchargement...';
             
-            // Simuler un téléchargement
             setTimeout(() => {
                 button.textContent = 'Téléchargé !';
                 
-                // Revenir au texte original
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.classList.remove('clicked');
@@ -128,7 +112,6 @@ const downloadButtons = () => {
     });
 }
 
-// Galerie d'images avec lightbox
 const galleryLightbox = () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
     
@@ -153,15 +136,12 @@ const galleryLightbox = () => {
             lightbox.appendChild(lightboxContent);
             document.body.appendChild(lightbox);
             
-            // Empêcher le défilement du body
             document.body.style.overflow = 'hidden';
             
-            // Animation d'entrée
             setTimeout(() => {
                 lightbox.style.opacity = '1';
-            }, 10);
+            });
             
-            // Fermer le lightbox
             closeBtn.addEventListener('click', () => {
                 lightbox.style.opacity = '0';
                 setTimeout(() => {
@@ -170,7 +150,6 @@ const galleryLightbox = () => {
                 }, 300);
             });
             
-            // Fermer en cliquant en dehors de l'image
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) {
                     lightbox.style.opacity = '0';
@@ -184,7 +163,6 @@ const galleryLightbox = () => {
     });
 }
 
-// Effet de typage pour le titre principal
 const typeEffect = () => {
     const heroTitle = document.querySelector('.hero h1');
     const text = heroTitle.textContent;
@@ -201,12 +179,9 @@ const typeEffect = () => {
     }, 100);
 }
 
-// Effet de compteur pour les statistiques
 const counterEffect = () => {
-    // Ajouter des statistiques plus tard si nécessaire
 }
 
-// Navigation fluide
 const smoothScroll = () => {
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -218,7 +193,6 @@ const smoothScroll = () => {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Fermer le menu mobile si ouvert
                 const nav = document.querySelector('.nav-links');
                 const burger = document.querySelector('.burger');
                 if (nav.classList.contains('nav-active')) {
@@ -235,7 +209,6 @@ const smoothScroll = () => {
     });
 }
 
-// Effet de particules pour le fond (version simplifiée)
 const particleEffect = () => {
     const canvas = document.createElement('canvas');
     canvas.className = 'particles-canvas';
@@ -287,7 +260,6 @@ const particleEffect = () => {
     });
 }
 
-// Effet de survol pour les cartes
 const cardHoverEffect = () => {
     const cards = document.querySelectorAll('.feature-card, .download-card');
     
@@ -306,7 +278,6 @@ const cardHoverEffect = () => {
     });
 }
 
-// Effet de survol pour les liens de navigation
 const navHoverEffect = () => {
     const navLinks = document.querySelectorAll('.nav-links a');
     
@@ -325,7 +296,6 @@ const navHoverEffect = () => {
     });
 }
 
-// Ajouter des styles CSS pour les effets JavaScript
 const addDynamicStyles = () => {
     const style = document.createElement('style');
     style.textContent = `
@@ -395,7 +365,6 @@ const addDynamicStyles = () => {
     document.head.appendChild(style);
 }
 
-// Initialiser tous les effets
 const init = () => {
     navSlide();
     parallax();
@@ -407,12 +376,10 @@ const init = () => {
     navHoverEffect();
     addDynamicStyles();
     
-    // Effets à déclencher après le chargement complet
     window.addEventListener('load', () => {
         typeEffect();
         particleEffect();
     });
 }
 
-// Exécuter l'initialisation
 init();
